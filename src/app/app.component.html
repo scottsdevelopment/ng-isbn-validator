@@ -1,5 +1,5 @@
 <mat-toolbar color="primary" class="mat-toolbar-single-row">
-Isbn Validator Demo
+  Isbn Validator Demo
 </mat-toolbar>
 <main class="basic-container">
   <mat-card>
@@ -8,11 +8,15 @@ Isbn Validator Demo
       <mat-card-subtitle>Instantly validate your ISBN numbers</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <form class="example-form">
-        <mat-form-field class="example-full-width">
+      <form>
+        <mat-form-field>
           <input matInput placeholder="ISBN Number" [formControl]="isbnFormControl" [errorStateMatcher]="matcher">
-          <mat-hint *ngIf="isbnFormControl.untouched">Enter your 13 digit ISBN number (spaces and dashes allowed)</mat-hint>
-          <mat-hint *ngIf="isbnFormControl.valid">You have entered a valid ISBN number.</mat-hint>
+          <mat-hint *ngIf="isbnFormControl.pristine">
+            Enter your 13 digit ISBN number (spaces and dashes allowed)
+          </mat-hint>
+          <mat-hint *ngIf="isbnFormControl.valid">
+            You have entered a valid ISBN number.
+          </mat-hint>
           <mat-error *ngIf="isbnFormControl.hasError('isbn') && !isbnFormControl.hasError('required')">
             Please enter a valid ISBN-13 number.
           </mat-error>
@@ -21,7 +25,12 @@ Isbn Validator Demo
           </mat-error>
         </mat-form-field>
       </form>
-      <p>Examples of correct ISBN numbers: 978-0-596-52068-7, 978-0-262-13472-9, 978-0-13-149505-0</p>
+      <p>Examples of correct ISBN numbers: </p>
+      <ul>
+        <li>978-0-596-52068-7</li>
+        <li>978-0-262-13472-9</li>
+        <li>978-0-13-149505-0</li>
+      </ul>
     </mat-card-content>
   </mat-card>
 </main>
